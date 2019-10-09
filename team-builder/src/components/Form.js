@@ -1,4 +1,29 @@
 import React, { useState } from "react";
+import styled from "styled-components";
+
+const FormContainer = styled.form`
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  margin: 0 auto;
+  background: lightblue;
+`;
+
+const InputField = styled.input`
+  background: papayawhip;
+`;
+
+const Button = styled.button`
+  margin-top: 10px;
+  background: blue;
+  color: white;
+  width: 50%;
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`;
 
 const Form = props => {
   const [teamMember, setTeamMember] = useState({
@@ -19,9 +44,9 @@ const Form = props => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <FormContainer onSubmit={handleSubmit}>
       <label htmlFor="fnameInput">First Name</label>
-      <input
+      <InputField
         id="fnameInput"
         value={teamMember.firstName}
         onChange={handleChange}
@@ -31,7 +56,7 @@ const Form = props => {
         type="text"
       />
       <label htmlFor="lnameInput">Last Name</label>
-      <input
+      <InputField
         id="lnameInput"
         value={teamMember.lastName}
         onChange={handleChange}
@@ -41,7 +66,7 @@ const Form = props => {
         type="text"
       />
       <label htmlFor="emailInput">Email</label>
-      <input
+      <InputField
         id="emailInput"
         value={teamMember.email}
         onChange={handleChange}
@@ -62,8 +87,10 @@ const Form = props => {
         <option>UX Designer</option>
         <option>Product Manager</option>
       </select>
-      <button type="submit">Submit Team Member</button>
-    </form>
+      <ButtonContainer>
+        <Button type="submit">Submit Team Member</Button>
+      </ButtonContainer>
+    </FormContainer>
   );
 };
 
