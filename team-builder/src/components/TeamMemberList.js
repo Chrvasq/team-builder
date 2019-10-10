@@ -1,5 +1,14 @@
 import React from "react";
 import TeamMember from "./TeamMember";
+import styled from "styled-components";
+
+const Container = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 90%;
+  margin: 0 auto;
+`;
 
 const TeamMemberList = props => {
   if (!props) {
@@ -7,8 +16,7 @@ const TeamMemberList = props => {
   }
 
   return (
-    <div>
-      <h1>Team Member List</h1>
+    <Container>
       {props.teamMemberList.map((teamMember, index) => (
         <div key={index}>
           <TeamMember
@@ -20,7 +28,7 @@ const TeamMemberList = props => {
           />
         </div>
       ))}
-    </div>
+    </Container>
   );
 };
 
