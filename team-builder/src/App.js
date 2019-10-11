@@ -18,15 +18,8 @@ function App() {
   };
 
   const editMember = teamMember => {
-    const newList = teamMemberList.map(member => {
-      console.log("Member", member);
-      console.log("TeamMember", teamMember);
-      if (
-        member.firstName !== teamMember.firstName ||
-        member.lastName !== teamMember.lastName ||
-        member.email !== teamMember.email ||
-        member.role !== teamMember.role
-      ) {
+    const newList = teamMemberList.map((member, index) => {
+      if (Number(memberToEdit) === index) {
         member = {
           ...member,
           firstName: teamMember.firstName,
@@ -36,6 +29,7 @@ function App() {
         };
         return member;
       }
+      return member;
     });
     setTeamMemberList(newList);
   };
