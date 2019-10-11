@@ -20,11 +20,12 @@ const TeamMemberList = props => {
       {props.teamMemberList.map((teamMember, index) => (
         <div key={index}>
           <TeamMember
-            key={index}
+            id={index}
             firstName={teamMember.firstName}
             lastName={teamMember.lastName}
             email={teamMember.email}
             role={teamMember.role}
+            setMemberToEdit={props.setMemberToEdit}
           />
         </div>
       ))}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 const FormContainer = styled.form`
@@ -39,9 +39,21 @@ const Form = props => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    props.addTeamMemberFn(teamMember);
-    setTeamMember({ firstName: "", lastName: "", email: "", role: "" });
+    if (props.memberToEdit) {
+      props.editMemberFn(teamMember);
+      setTeamMember({ firstName: "", lastName: "", email: "", role: "" });
+      props.setMemberToEdit("");
+    } else {
+      props.addTeamMemberFn(teamMember);
+      setTeamMember({ firstName: "", lastName: "", email: "", role: "" });
+    }
   };
+
+  useEffect(() => {
+    if (props.memberToEdit) {
+      setTeamMember(props.teamMemberList[props.memberToEdit]);
+    }
+  }, [props.memberToEdit]);
 
   return (
     <FormContainer onSubmit={handleSubmit}>
